@@ -16,6 +16,8 @@
   font-size: 64px;
   color: white;
   background-color: gray;
+  min-width: 50px;
+  text-align: center;
 }
 
 .info-container {

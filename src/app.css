@@ -9,9 +9,27 @@
   text-align: center;
 }
 
+.sort-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 18px;
+}
+
+.sort-cta {
+  cursor: pointer;
+  margin-right: 20px;
+  color: #cccccc;
+}
+
+.sort-applied {
+  color: #0022e4;
+  font-weight: bold;
+}
+
 .pokemon-container {
   max-width: 400px;
-  margin: 48px auto;
+  margin: 36px auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

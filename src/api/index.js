@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { baseApiUrl } from './utils';
+
+const baseApiUrl = 'https://pokeapi.co/api/v2';
 
 export const getPokemon = async () => {
   return new Promise((resolve, reject) => {
@@ -14,12 +15,17 @@ export const getPokemon = async () => {
 export const getPokemonDetails = async (url) => {
   return new Promise((resolve, reject) => {
     axios.get(url).then((response) => {
-      const { height, weight, sprites } = response.data;
+      const {
+        height,
+        weight, sprites,
+        order,
+      } = response.data;
 
       resolve({
         height,
         weight,
         images: sprites,
+        order,
       });
     }, () => {
       reject(new Error('Something went wrong getting pokemon details.'));

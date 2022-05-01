@@ -19,11 +19,18 @@ class PokeCard extends React.Component {
     });
   }
 
-  favoriteToggled() {    
+  toggleFavorite = () => {
     this.setState((state) => {
       return { favorite: !state.favorite };
     });
-  }
+  };
+
+  favoriteEnterPressed = (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      this.toggleFavorite();
+    }
+  };
 
   render() {
     const { details, favorite } = this.state;
@@ -34,24 +41,16 @@ class PokeCard extends React.Component {
 
     return (
       <div className="card-container">
-        {imageUrl && <div className="image-container">{imageUrl && <img alt="pokemon" src={imageUrl} />}</div>}
+        {imageUrl && <div className="image-container">{imageUrl && <img alt="front view of pokemon" src={imageUrl} />}</div>}
         {!imageUrl && <div className="name-first-letter">{nameFirstLetter}</div>}
         <div className="info-container">
           <span className="info title">{name}</span>
-          <span className="info">
-            Height:&nbsp;
-            {details.height}
-            &nbsp;decimetres
-          </span>
-          <span className="info">
-            Weight:&nbsp;
-            {details.weight}
-            &nbsp;hectograms
-          </span>
+          <span className="info">{`Height: ${details.height} decimetres`}</span>
+          <span className="info">{`Weight: ${details.weight} hectograms`}</span>
         </div>
         <div className="favorite-container">
-          {!favorite && <span className="material-icons favorite-icon" onClick={this.favoriteToggled}>favorite_border</span>}
-          {favorite && <span className="material-icons favorite-icon" onClick={this.favoriteToggled}>favorite</span>}
+          {!favorite && <span role="button" tabIndex="0" className="material-icons favorite-icon" onClick={this.toggleFavorite} onKeyUp={this.favoriteEnterPressed}>favorite_border</span>}
+          {favorite && <span role="button" tabIndex="0" className="material-icons favorite-icon" onClick={this.toggleFavorite} onKeyUp={this.favoriteEnterPressed}>favorite</span>}
         </div>
       </div>
     );
