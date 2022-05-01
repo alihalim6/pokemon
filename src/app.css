@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .app {
   font-family: 'Questrial';
+}
+
+.header {
+  text-align: center;
+}
+
+.pokemon-container {
+  max-width: 400px;
+  margin: 48px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
