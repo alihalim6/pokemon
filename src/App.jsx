@@ -77,8 +77,8 @@ class App extends React.Component {
     return (
       <div className="app">
         {loading && <h1>Loading...</h1>}
-        {!loading && <h1 className="header">Learn About Pokemon!</h1>}
         {!loading && (
+          <h1 className="header">Learn About Pokemon!</h1>
           <div className="pokemon-container">
             <div className="sort-container">
               <span onClick={this.sortAscending} className={`sort-cta ${sortedAscending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedAscending} onKeyDown={(event) => this.spaceBarSort(event, this.sortAscending)}>
