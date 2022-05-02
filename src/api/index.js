@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseApiUrl = 'https://pokeapi.co/api/v2';
+export const baseApiUrl = 'https://pokeapi.co/api/v2';
 
 export const getPokemon = async () => {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,8 @@ export const getPokemonDetails = async (url) => {
     axios.get(url).then((response) => {
       const {
         height,
-        weight, sprites,
+        weight,
+        sprites,
         order,
       } = response.data;
 

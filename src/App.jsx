@@ -83,7 +83,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        {loading && <span>Loading...</span>}
+        {loading && <h1>Loading...</h1>}
         {!loading && <h1 className="header">Learn About Pokemon!</h1>}
         {!loading && (
           <div className="pokemon-container">

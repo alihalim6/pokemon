@@ -1,6 +1,8 @@
 const airbnb = require('@neutrinojs/airbnb');
 const react = require('@neutrinojs/react');
 const jest = require('@neutrinojs/jest');
+const copy = require('@neutrinojs/copy');
+const neutrino = require('neutrino');
 
 module.exports = {
   options: {
@@ -12,7 +14,7 @@ module.exports = {
         rules: {
           'arrow-body-style': 0
         }
-      },
+      }
     }),
     react({
       html: {
@@ -24,5 +26,14 @@ module.exports = {
       }
     }),
     jest(),
-  ],
+    copy({
+      patterns: [ {from: 'src/assets/favicon.ico'} ],
+      pluginId: 'copy',
+    }),
+    (neutrino) => {
+      neutrino.config.performance
+      .maxEntrypointSize(512000)
+      .maxAssetSize(512000);
+    }
+  ]
 };
