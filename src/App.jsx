@@ -78,20 +78,22 @@ class App extends React.Component {
       <div className="app">
         {loading && <h1>Loading...</h1>}
         {!loading && (
-          <h1 className="header">Learn About Pokemon!</h1>
-          <div className="pokemon-container">
-            <div className="sort-container">
-              <span onClick={this.sortAscending} className={`sort-cta ${sortedAscending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedAscending} onKeyDown={(event) => this.spaceBarSort(event, this.sortAscending)}>
-                Sort A-Z
-              </span>
-              <span onClick={this.sortDescending} className={`sort-cta ${sortedDescending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedDescending} onKeyDown={(event) => this.spaceBarSort(event, this.sortDescending)}>
-                Sort Z-A
-              </span>
+          <>
+            <h1 className="header">Learn About Pokemon!</h1>
+            <div className="pokemon-container">
+              <div className="sort-container">
+                <span onClick={this.sortAscending} className={`sort-cta ${sortedAscending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedAscending} onKeyDown={(event) => this.spaceBarSort(event, this.sortAscending)}>
+                  Sort A-Z
+                </span>
+                <span onClick={this.sortDescending} className={`sort-cta ${sortedDescending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedDescending} onKeyDown={(event) => this.spaceBarSort(event, this.sortDescending)}>
+                  Sort Z-A
+                </span>
+              </div>
+              {displayedPokemons.map((pokemon) => {
+                return <PokeCard pokemon={pokemon} key={pokemon.name} />;
+              })}
             </div>
-            {displayedPokemons.map((pokemon) => {
-              return <PokeCard pokemon={pokemon} key={pokemon.name} />;
-            })}
-          </div>
+          </>
         )}
       </div>
     );
