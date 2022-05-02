@@ -36,8 +36,9 @@ class PokeCard extends React.Component {
     const { details, favorite } = this.state;
     const { pokemon } = this.props;
     const name = capitalCase(pokemon.name);
+    // if no image, just show a square with first letter of pokemon name
     const nameFirstLetter = name.substring(0, 1);
-    const imageUrl = details.images && details.images.front_default ? details.images.front_default : '';
+    const imageUrl = (details.images && details.images.front_default) ? details.images.front_default : '';
 
     return (
       <div className="card-container">

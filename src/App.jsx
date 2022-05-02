@@ -47,17 +47,10 @@ class App extends React.Component {
     });
   };
 
-  spaceBarSortAscending = (event) => {
+  spaceBarSort = (event, sortFn) => {
     if (event.keyCode === 32) {
       event.preventDefault();
-      this.sortAscending();
-    }
-  };
-
-  spaceBarSortDescending = (event) => {
-    if (event.keyCode === 32) {
-      event.preventDefault();
-      this.sortDescending();
+      sortFn();
     }
   };
 
@@ -88,8 +81,12 @@ class App extends React.Component {
         {!loading && (
           <div className="pokemon-container">
             <div className="sort-container">
-              <span onClick={this.sortAscending} className={`sort-cta ${sortedAscending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedAscending} onKeyDown={this.spaceBarSortAscending}>Sort A-Z</span>
-              <span onClick={this.sortDescending} className={`sort-cta ${sortedDescending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedDescending} onKeyDown={this.spaceBarSortDescending}>Sort Z-A</span>
+              <span onClick={this.sortAscending} className={`sort-cta ${sortedAscending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedAscending} onKeyDown={(event) => this.spaceBarSort(event, this.sortAscending)}>
+                Sort A-Z
+              </span>
+              <span onClick={this.sortDescending} className={`sort-cta ${sortedDescending ? 'sort-applied' : ''}`} role="switch" tabIndex="0" aria-checked={sortedDescending} onKeyDown={(event) => this.spaceBarSort(event, this.sortDescending)}>
+                Sort Z-A
+              </span>
             </div>
             {displayedPokemons.map((pokemon) => {
               return <PokeCard pokemon={pokemon} key={pokemon.name} />;

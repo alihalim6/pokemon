@@ -9,10 +9,12 @@ describe('pokecard', () => {
     const { getByText } = render(<PokeCard pokemon={mockPokemon}/>);
     let favoriteEmptyIcon = getByText('favorite_border');
 
+    // mark as favorite
     fireEvent.click(favoriteEmptyIcon);
     const favoriteFilledIcon = getByText('favorite');
     expect(favoriteFilledIcon).toBeDefined();
 
+    // unmark favorite
     fireEvent.click(favoriteFilledIcon);
     favoriteEmptyIcon = getByText('favorite_border');
     expect(favoriteEmptyIcon).toBeDefined();
